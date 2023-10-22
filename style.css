@@ -1,0 +1,209 @@
+:root {
+    --bg: #181a1b;
+    --text-color: #dbd8d4;
+    --button-bg: #292c2e80;
+    --button-bg-hover: #292c2e;
+    --menu-bg: #121415;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, sans-serif;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+body {
+    background-color: var(--bg);
+    color: white;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px 40px 10px 20px;
+    border-bottom: 2px solid var(--button-bg);
+}
+
+nav .logo {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 1;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+nav .logo:hover {
+    transform: scale(1.1);
+}
+
+.nav-left {
+    display: flex;
+    width: 444px;
+    justify-content: start;
+}
+
+.nav-right {
+    display: flex;
+    width: 444px;
+    justify-content: end;
+}
+
+.nav-left * {
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.menu {
+    display: none;
+}
+
+@media screen and (max-width: 1150px) {
+    nav {
+        justify-content: space-between;
+    }
+    .nav-right {
+        width: auto;
+    }
+    .nav-left {
+        display: none;
+    }
+    .menu {
+        display: flex !important;
+        position: absolute;
+        flex-direction: column;
+        top: 145px;
+        left: 20px;
+        transition: 0.2s ease-in-out;
+        background-color: var(--menu-bg);
+        padding: 20px;
+        border-radius: 20px;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .open {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    nav {
+        justify-content: center;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .nav-right ul {
+        flex-wrap: wrap;
+        justify-self: center;
+        width: 100%;
+    }
+    .menu {
+        left: calc(50% - 80px);
+        top: 185px;
+    }
+}
+
+nav ul {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+nav ul li {
+    padding: 10px;
+    border-radius: 50px;
+    background-color: var(--button-bg);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+nav ul li:hover {
+    background-color: var(--button-bg-hover);
+    transform: scale(1.1);
+}
+
+.tweets-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.tweet {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: var(--button-bg);
+}
+
+.tweet:nth-child(3n) {
+    grid-column: 1/3;
+}
+
+@media screen and (max-width: 800px) {
+    .tweets-grid {
+        grid-template-columns: 1fr;
+    }
+    .tweet:nth-child(3n) {
+        grid-column: 1/2;
+    }
+}
+
+.tweet .tweet-header {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: 10px;
+}
+
+.tweet .tweet-header .tweet-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tweet .tweet-header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.tweet .tweet-header h3 {
+    font-size: 20px;
+}
+
+.tweet .tweet-header p {
+    font-size: 15px;
+}
+
+.tweet .tweet-content {
+    font-size: 20px;
+}
+
+.tweet .tweet-footer {
+    display: flex;
+    gap: 20px;
+    justify-content: end;
+    align-items: center;
+    margin-top: auto;
+}
+
+.tweet .tweet-footer i {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* footer buttons always at bottom of tweet box*/
+
